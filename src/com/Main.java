@@ -13,18 +13,16 @@ public class Main {
     public static void main(String[] args){
         SessionFactory factory=null;
         try{
-            Configuration obj=new Configuration();
+      /*      Configuration obj=new Configuration();
             factory=obj.configure().buildSessionFactory();
             DAO<User, String> userDAO=new UsersDAO(factory);
             DAO<User_data, String> user_dataDAO=new Users_dataDAO(factory);
             User user=new User();
             User_data user_data=new User_data();
-            user.setId(2);
             user.setLogin("logiiiiiin");
             user.setPassword("password");
             user.setUsername("username122232");
             user.setAccessLevel(1);
-            user_data.setId(2);
             user_data.setUsername("username122232");
             user_data.setAge(22);
             user_data.setMail("co.a@ua.ru");
@@ -34,7 +32,7 @@ public class Main {
             user_data.setNormKK(23);
             userDAO.create(user);
            // System.out.println(userDAO.read("username1").getLogin());
-            user_dataDAO.create(user_data);
+            user_dataDAO.create(user_data);*/
         }
         catch (Exception e){
             System.out.println(e.getMessage());

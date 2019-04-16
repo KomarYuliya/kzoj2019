@@ -26,20 +26,14 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Enumeration en=req.getParameterNames();
-        String[] buf=new String[8];
-        int i=0;
-      /*  while (en.hasMoreElements()){
-            buf[i]=req.getParameter((String)en.nextElement());
-            System.out.println(buf[i]);
-            i++;
-        }*/
-     //   System.out.println(req.getParameter("login"));
-        registration(req);
-
-        req.getRequestDispatcher("RegWindow.jsp").forward(req,resp);
+        if(registration(req)==1)
+                req.getRequestDispatcher("AutorizWindow.jsp").forward(req,resp);
+        else {
+            req.setAttribute("usernameAlreadyExists", "There is user with this username already");
+            req.getRequestDispatcher("RegWindow.jsp").forward(req, resp);
+        }
     }
-    private void registration(HttpServletRequest req){
+    private int registration(HttpServletRequest req){
         SessionFactory factory=null;
         try{
             Configuration conf=new Configuration();
@@ -49,29 +43,33 @@ public class RegistrationServlet extends HttpServlet {
             DAO<User_data, String> user_dataDAO=new Users_dataDAO(factory);
 
             User user=new User();
-            user.setId(1);
             user.setLogin(req.getParameter("login"));
             user.setPassword(req.getParameter("password"));
             user.setUsername(req.getParameter("username"));
             user.setAccessLevel(0);
-            userDAO.create(user);
+            if(userDAO.read(user.getUsername()).getLogin().equals("???")!=true){
+                return 0;
+            }
 
-            User_data user_data=new User_data();
-            user_data.setUsername(req.getParameter("username"));
-            user_data.setId(1);
-            user_data.setAge(Integer.parseInt(req.getParameter("age")));
-            user_data.setHeight(Integer.parseInt(req.getParameter("height")));
-            user_data.setWeight(Integer.parseInt(req.getParameter("weight")));
-            user_data.setNormKK(12);
-            user_data.setNormGBU(12);
-            user_data.setMail(req.getParameter("email"));
-            user_dataDAO.create(user_data);
+            else {
+                userDAO.create(user);
+
+                User_data user_data = new User_data();
+                user_data.setLogin(req.getParameter("login"));
+                user_data.setAge(Integer.parseInt(req.getParameter("age")));
+                user_data.setHeight(Integer.parseInt(req.getParameter("height")));
+                user_data.setWeight(Integer.parseInt(req.getParameter("weight")));
+                user_data.setNormKK(12);
+                user_data.setNormGBU(12);
+                user_data.setMail(req.getParameter("email"));
+                user_dataDAO.create(user_data);
+            }
+            return 1;
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());
-        }
-        finally {
-       //     System.exit(0);
+            return -1;
         }
     }
 }

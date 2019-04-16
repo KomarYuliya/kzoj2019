@@ -4,10 +4,9 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
     <class name="com.model.User" table="users">
-        <id name="id" column="id" />
-        <property name="login" column="login" />
-        <property name="password" column="password" />
+        <id name="login" column="login" />
         <property name="username" column="username" />
+        <property name="password" column="password" />
         <property name="accessLevel" column="accessLevel" />
     </class>
 </hibernate-mapping>

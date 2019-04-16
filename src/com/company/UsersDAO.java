@@ -23,18 +23,22 @@ public class UsersDAO implements DAO<User, String> {
         return result;
     }
 
-    public User read(String username) {
+    public User read(String login) {
         User result=new User();
-        result.setId(-1);
 
         try(Session session=factory.openSession()){
-            result=session.get(User.class, username);
+            result=session.get(User.class, login);
         }
         catch (Exception e){
             System.out.println("Error "+e.getMessage());
         }
         finally {
-            return result != null ? result : new User();
+            if(result==null){
+                result=new User();
+                result.setLogin("???");
+                return result;
+            }
+            return result;
         }
     }
     public boolean update(User user){

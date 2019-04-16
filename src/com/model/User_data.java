@@ -1,8 +1,7 @@
 package com.model;
 
 public class User_data {
-    private int id;
-    private String username;
+    private String login;
     private int age;
     private String mail;
     private double height;
@@ -11,20 +10,12 @@ public class User_data {
     private int normGBU;
     public User_data(){};
 
-    public int getId() {
-        return id;
+    public String getLogin() {
+        return login;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public int getAge() {

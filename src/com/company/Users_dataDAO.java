@@ -25,33 +25,46 @@ public class Users_dataDAO implements DAO<User_data, String> {
 
     public User_data read(String login) {
         User_data result=new User_data();
-        result.setId(-1);
-       /* try(PreparedStatement statement=connection.prepareStatement("fdfg")){
-            ResultSet rs=statement.executeQuery();
-            if(rs.next()){
-                result.setId(rs.getInt("id"));
-                result.setLogin(rs.getString("login"));
-                result.setPassword(rs.getString("password"));
-                result.setAccessLevel(rs.getInt("accessLevel"));
-            }
+        result.setLogin("???");
+
+        try(Session session=factory.openSession()){
+            result=session.get(User_data.class, login);
         }
-        catch (SQLException e){
-            System.out.println(e.getMessage());
-        }*/
-        return result;
+        catch (Exception e){
+            System.out.println("Error "+e.getMessage());
+        }
+        finally {
+            return result != null ? result : new User_data();
+        }
     }
     public boolean update(User_data user_data){
         boolean result=false;
-      /*  try(PreparedStatement statement=connection.prepareStatement(" ")){
-            result=true;
+        try(Session session=factory.openSession()){
+            session.beginTransaction();
+            session.update(user_data);
+            session.getTransaction().commit();
+            result = true;
         }
-        catch (SQLException e){
-            System.out.println(e.getMessage());
-        }*/
-        return result;
+        catch (Exception e){
+            System.out.println("Error "+e.getMessage());
+        }
+        finally {
+            return result;
+        }
     }
     public boolean delete(User_data user_data){
         boolean result=false;
-        return result;
+        try(Session session=factory.openSession()){
+            session.beginTransaction();
+            session.delete(user_data);
+            session.getTransaction().commit();
+            result = true;
+        }
+        catch (Exception e){
+            System.out.println("Error "+e.getMessage());
+        }
+        finally {
+            return result;
+        }
     }
 }

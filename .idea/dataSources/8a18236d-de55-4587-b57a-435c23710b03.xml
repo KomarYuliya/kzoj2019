@@ -36,12 +36,12 @@
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="14" parent="7" name="id">
+    <column id="14" parent="7" name="login">
       <Position>1</Position>
-      <DataType>INTEGER|0s</DataType>
+      <DataType>VARCHAR(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="7" name="login">
+    <column id="15" parent="7" name="users">
       <Position>2</Position>
       <DataType>VARCHAR(15)|0s</DataType>
     </column>
@@ -49,65 +49,71 @@
       <Position>3</Position>
       <DataType>VARCHAR(15)|0s</DataType>
     </column>
-    <column id="17" parent="7" name="username">
+    <column id="17" parent="7" name="accessLevel">
       <Position>4</Position>
-      <DataType>VARCHAR(15)|0s</DataType>
-    </column>
-    <column id="18" parent="7" name="accessLevel">
-      <Position>5</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
+    <index id="18" parent="7" name="sqlite_autoindex_users_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>login</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
     <key id="19" parent="7">
-      <ColNames>id</ColNames>
+      <ColNames>login</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
     </key>
-    <column id="20" parent="8" name="id">
+    <column id="20" parent="8" name="login">
       <Position>1</Position>
-      <DataType>INTEGER|0s</DataType>
+      <DataType>VARCHAR(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="21" parent="8" name="username">
+    <column id="21" parent="8" name="age">
       <Position>2</Position>
-      <DataType>VARCHAR(15)|0s</DataType>
-    </column>
-    <column id="22" parent="8" name="age">
-      <Position>3</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <column id="23" parent="8" name="mail">
-      <Position>4</Position>
+    <column id="22" parent="8" name="mail">
+      <Position>3</Position>
       <DataType>VARCHAR(20)|0s</DataType>
     </column>
-    <column id="24" parent="8" name="height">
+    <column id="23" parent="8" name="height">
+      <Position>4</Position>
+      <DataType>DOUBLE|0s</DataType>
+    </column>
+    <column id="24" parent="8" name="weight">
       <Position>5</Position>
       <DataType>DOUBLE|0s</DataType>
     </column>
-    <column id="25" parent="8" name="weight">
+    <column id="25" parent="8" name="normKK">
       <Position>6</Position>
-      <DataType>DOUBLE|0s</DataType>
+      <DataType>INTEGER|0s</DataType>
     </column>
-    <column id="26" parent="8" name="normKK">
+    <column id="26" parent="8" name="normGBU">
       <Position>7</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <column id="27" parent="8" name="normGBU">
-      <Position>8</Position>
-      <DataType>INTEGER|0s</DataType>
-    </column>
+    <index id="27" parent="8" name="sqlite_autoindex_users_data_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>login</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
     <key id="28" parent="8">
-      <ColNames>id</ColNames>
+      <ColNames>login</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_users_data_1</UnderlyingIndexName>
     </key>
     <foreign-key id="29" parent="8">
-      <ColNames>username</ColNames>
+      <ColNames>login</ColNames>
       <RefTableName>users</RefTableName>
-      <RefColNames>username</RefColNames>
+      <RefColNames>login</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <foreign-key id="30" parent="8">
-      <ColNames>username</ColNames>
+      <ColNames>login</ColNames>
       <RefTableName>users</RefTableName>
-      <RefColNames>username</RefColNames>
+      <RefColNames>login</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
   </database-model>

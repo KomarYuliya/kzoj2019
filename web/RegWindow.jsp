@@ -22,5 +22,6 @@
         <label for="weight">Weight<input type="number" id="weight" name="weight"></label>
         <input type="submit" value="Registration">
     </form>
+    <h2>${requestScope.usernameAlreadyExists}</h2>
 </body>
 </html>

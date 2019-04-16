@@ -1,17 +1,12 @@
 package com.model;
 
 public class User {
-    private int id;
     private String login;
     private String password;
     private String username;
     private int accessLevel;
 
     public User(){}
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setLogin(String login) {
         this.login = login;
@@ -27,10 +22,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public int getAccessLevel() {
