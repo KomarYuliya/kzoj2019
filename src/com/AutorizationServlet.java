@@ -9,11 +9,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebServlet("/")
 public class AutorizationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,19 +24,6 @@ public class AutorizationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       /* String login=req.getParameter("login");
-        String password=req.getParameter("password");
-        DataBase db=new DataBase();
-        String[] buf = db.find("SELECT username FROM users WHERE login='"+login+"' AND password='"+password+"'","username");
-        if(buf[0]!=null) {
-            req.setAttribute("userName",buf[0]);
-            req.getRequestDispatcher("MainWindow.jsp").forward(req,resp);
-        }
-        else {
-            req.setAttribute("errorUserNotFound","Wrong login or password");
-            req.getRequestDispatcher("AutorizWindow.jsp").forward(req,resp);
-        }
-        */
         SessionFactory factory=null;
         try {
             Configuration conf = new Configuration();
@@ -42,6 +31,7 @@ public class AutorizationServlet extends HttpServlet {
 
             DAO<User, String> userDAO = new UsersDAO(factory);
             DAO<User_data, String> user_dataDAO = new Users_dataDAO(factory);
+
 
             User user = new User();
             user.setLogin(req.getParameter("login"));
@@ -52,6 +42,8 @@ public class AutorizationServlet extends HttpServlet {
                 req.getRequestDispatcher("AutorizWindow.jsp").forward(req,resp);
             }
             else {
+                SingleTone singleTone=SingleTone.getInstance("");
+                singleTone.setLogin(user.getLogin());
                 req.setAttribute("userName", user.getLogin());
                 req.getRequestDispatcher("MainWindow.jsp").forward(req, resp);
             }

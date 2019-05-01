@@ -41,17 +41,17 @@
       <DataType>VARCHAR(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="7" name="users">
+    <column id="15" parent="7" name="password">
       <Position>2</Position>
       <DataType>VARCHAR(15)|0s</DataType>
     </column>
-    <column id="16" parent="7" name="password">
+    <column id="16" parent="7" name="accessLevel">
       <Position>3</Position>
-      <DataType>VARCHAR(15)|0s</DataType>
-    </column>
-    <column id="17" parent="7" name="accessLevel">
-      <Position>4</Position>
       <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="17" parent="7" name="username">
+      <Position>4</Position>
+      <DataType>varchar(15)|0s</DataType>
     </column>
     <index id="18" parent="7" name="sqlite_autoindex_users_1">
       <NameSurrogate>1</NameSurrogate>

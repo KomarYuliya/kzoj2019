@@ -12,5 +12,15 @@
 </head>
 <body>
 <h1>Welcome, ${requestScope.userName}!</h1>
+<nav class="four">
+    <ul>
+        <li><a href="#"><i class="fa fa-home fa-fw"></i>Главная</a></li>
+        <li><a href="#">Дневник</a></li>
+        <li><a href="#">Статистика</a></li>
+        <li><a href="/change">Личный кабинет</a></li>
+        <li><a href="#">Фичи разные</a></li>
+        <li><a href="/">Выйти</a></li>
+    </ul>
+</nav>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <body>
 
 <h1>Lima, you should translate all text cause I'm lazy to switch keyboard ;D </h1>
-<form action="AutorizationServlet" method="post">
+<form action="/" method="post">
     <label for="login">Login<input type="text" id="login" name="login"></label>
     <label for="password">Password<input type="password" id="password" name="password"></label>
     <input type="submit" value="Autorisation">

@@ -13,13 +13,14 @@ public class Main {
     public static void main(String[] args){
         SessionFactory factory=null;
         try{
-      /*      Configuration obj=new Configuration();
+            Configuration obj=new Configuration();
             factory=obj.configure().buildSessionFactory();
             DAO<User, String> userDAO=new UsersDAO(factory);
             DAO<User_data, String> user_dataDAO=new Users_dataDAO(factory);
             User user=new User();
             User_data user_data=new User_data();
-            user.setLogin("logiiiiiin");
+            System.out.println(user_data.getMail());
+      /*      user.setLogin("logiiiiiin");
             user.setPassword("password");
             user.setUsername("username122232");
             user.setAccessLevel(1);
