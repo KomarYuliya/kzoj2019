@@ -69,6 +69,22 @@ public class ChangeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        SingleTone singleTone=SingleTone.getInstance("");
+        Configuration conf = new Configuration();
+        SessionFactory factory=null;
+        factory = conf.configure().buildSessionFactory();
+        DAO<User, String> userDAO = new UsersDAO(factory);
+        DAO<User_data, String> user_dataDAO = new Users_dataDAO(factory);
+        User user=userDAO.read(singleTone.getLogin());
+        User_data user_data=user_dataDAO.read(singleTone.getLogin());
+        String result="<p>Логин: " + user.getLogin()+"</p>"+
+                "<p>Пароль: " + user.getPassword()+"</p>\n"+
+                "<p>Имя пользователя: " + user.getUsername()+"</p>\n"+
+                "<p>Возраст: " + user_data.getAge()+"</p>\n"+
+                "<p>E-mail: " + user_data.getMail()+"</p>\n"+
+                "<p>Рост: " + user_data.getHeight()+"</p>\n"+
+                "<p>Вес: "+ user_data.getWeight()+"</p>\n";
+        req.setAttribute("userData", result);
         req.getRequestDispatcher("ChangeWindow.jsp").forward(req, resp);
     }
 }

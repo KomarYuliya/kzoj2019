@@ -13,16 +13,10 @@
 <body>
 <table>
     <tr>
-        <!--<td>
+        <td>
             <h2>Информация о Вас</h2>
-            <p><label>Login</label></p>
-            <p><label>Password</label></p>
-            <p><label>Userame</label></p>
-            <p><label>Age</label></p>
-            <p><label>Email</label></p>
-            <p><label>Heigh</label></p>
-            <p><label>Weight</label></p>
-        </td>-->
+            ${requestScope.userData}
+        </td>
         <td>
             <h2>Здесь вы можете изменить данные о себе</h2>
             <form action="/change" method="post">
