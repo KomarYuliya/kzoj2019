@@ -153,7 +153,7 @@
                 <label for="height"><input type="number" id="height" name="height" class="form-control" placeholder="Введите рост"></label>
             </div><div class="form-group">
                 <label for="weight"><input type="number" id="weight" name="weight" class="form-control" placeholder="Введите вес"></label>
-                <p class="help-block">${requestScope.erroCannotSaveChanges}</p>
+                <p class="help-block">${requestScope.errorCannotSaveChanges}</p>
             </div><div class="form-group">
                 <p><input type="submit" value="Изменить" class="btn btn-default"></p>
             </div>

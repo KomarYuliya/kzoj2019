@@ -135,10 +135,11 @@
                 <input type="submit" class="btn btn-default" value="Вход">
             </div>
                 <p class="help-block">${requestScope.errorUserNotFound}</p>
-                <form action="/registration" method="get">
-                    <input type="submit" class="btn btn-default" value="Регистрация">
-                </form>
+
             </form>
+            <form action="/registration" method="get">
+            <input type="submit" class="btn btn-default" value="Регистрация">
+        </form>
         </div></div>
 </div>
 </body>
