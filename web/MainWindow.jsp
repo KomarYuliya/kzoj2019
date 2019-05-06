@@ -8,19 +8,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Demo Background */
+        body{background-color: #bdff93;)}
+        .active{color: #bdff93;)}
+    </style>
 </head>
 <body>
-<h1>Welcome, ${requestScope.userName}!</h1>
-<nav class="four">
-    <ul>
-        <li><a href="#"><i class="fa fa-home fa-fw"></i>Главная</a></li>
-        <li><a href="#">Дневник</a></li>
-        <li><a href="#">Статистика</a></li>
-        <li><a href="/change">Личный кабинет</a></li>
-        <li><a href="#">Фичи разные</a></li>
-        <li><a href="/">Выйти</a></li>
-    </ul>
-</nav>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Главная</a></li>
+            <li><a href="#">Дневник</a></li>
+            <li><a href="#">Статистика</a></li>
+            <li><a href="/change">Личный кабинет</a></li>
+            <li><a href="#">Фичи разные</a></li>
+            <li><a href="/">Выйти</a></li>
+        </ul>
+    </nav>
+</div>
+<h4>
+    <strong>
+        <mark style="background-color: azure">Добро пожаловать, ${requestScope.userName}!</mark>
+    </strong>
+</h4>
 </body>
 </html>
