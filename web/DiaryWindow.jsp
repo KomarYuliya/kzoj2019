@@ -121,7 +121,7 @@
 <div class="container">
     <nav class="navbar navbar-default">
         <ul class="nav navbar-nav">
-            <li><a href="#">Главная</a></li>
+            <li><a href="/diaryf">Главная</a></li>
             <li class="active"><a href="#">Дневник</a></li>
             <li><a href="#">Статистика</a></li>
             <li><a href="/change">Личный кабинет</a></li>
@@ -152,14 +152,16 @@
             <td>Углеводы</td>
             <td>Удалить</td>
         </tr>
+        <form method="post" action="/diaryf">
         ${requestScope.data}
         <tr>
-            <form method="get" action="/diary">
+
             <td colspan="8">
                 <input type="submit" value="Удалить">
             </td>
-            </form>
+
         </tr>
+    </form>
     </table>
     ${requestScope.norms}
 </div>

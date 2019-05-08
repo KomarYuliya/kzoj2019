@@ -63,7 +63,7 @@ public class FoodDAO implements DAO<Food, String> {
         return null;
     }
 
-    public boolean delete(String food){
+    public boolean delete(Food food){
         boolean result=false;
         try(Session session=factory.openSession()){
             session.beginTransaction();

@@ -65,14 +65,12 @@ public class DiaryDAO implements DAO<Diary, String> {
             return result;
         }
     }
-    public boolean delete(String id){
+    public boolean delete(Diary diary){
         boolean result=false;
         try(Session session=factory.openSession()){
-
-            String sql="delete from "+Diary.class.getSimpleName();
-            sql+=" where id= :paramId";
-            Query query=session.createQuery(sql);
-            query.setParameter("paramId", Long.parseLong(id));
+            session.beginTransaction();
+            session.delete(diary);
+            session.getTransaction().commit();
             result = true;
         }
         catch (Exception e){
@@ -105,7 +103,7 @@ public class DiaryDAO implements DAO<Diary, String> {
                         "<td>"+food.getFats()*coeff+"</td>\n"+
                         "<td>"+food.getProtein()*coeff+"</td>\n"+
                         "<td>"+food.getCarbohydrates()*coeff+"</td>\n"+
-                        "<td><input type='checkbox' value='"+d.getId()+"'></td>\n"+
+                        "<td><input type='checkbox' value='"+d.getId()+"' name='toDelete'></td>\n"+
                         "</tr>\n";
             }
         }

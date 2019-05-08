@@ -58,7 +58,7 @@ public class Users_dataDAO implements DAO<User_data, String> {
             return result;
         }
     }
-    public boolean delete(String user_data){
+    public boolean delete(User_data user_data){
         boolean result=false;
         try(Session session=factory.openSession()){
             session.beginTransaction();

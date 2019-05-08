@@ -41,6 +41,12 @@ public class StatisticDAO implements DAO<Statistic, String> {
             List<Statistic> statistics = query.list();
             for(Statistic s: statistics){
                 DAO<Diary, String> diaryStringDAO=new DiaryDAO(factory);
+                String buff=diaryStringDAO.getTableView(s.getLogin()+"+"+s.getDate());
+                if(buff.equals(""))
+                {
+                    delete(s);
+                    continue;
+                }
                 result+=diaryStringDAO.getTableView(s.getLogin()+"+"+s.getDate());
                 result+="\n<tr>\n" +
                         "<td>"+s.getDate()+"</td>\n" +
@@ -98,7 +104,7 @@ public class StatisticDAO implements DAO<Statistic, String> {
             return result;
         }
     }
-    public boolean delete(String statistic){
+    public boolean delete(Statistic statistic){
         boolean result=false;
         try(Session session=factory.openSession()){
             session.beginTransaction();

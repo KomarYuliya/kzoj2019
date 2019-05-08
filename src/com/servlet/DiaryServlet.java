@@ -20,20 +20,12 @@ import java.io.IOException;
 public class DiaryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Configuration conf = new Configuration();
-        SessionFactory factory = conf.configure().buildSessionFactory();
-        DAO<User_data, String> users_dataDAO=new Users_dataDAO(factory);
-        DAO<Statistic, String> statisticDAO=new StatisticDAO(factory);
-        SingleTone singleTone=SingleTone.getInstance("login");
-        User_data user_data=users_dataDAO.read(singleTone.getLogin());
-        req.setAttribute("norms", "\n" +
-                "            <td>Калории: "+user_data.getNormCal()+"</td>\n" +
-                "            <td>Жиры: "+user_data.getNormFats()+"</td>\n" +
-                "            <td>Белки: "+user_data.getNormProteins()+"</td>\n" +
-                "            <td>Углеводы: "+user_data.getNormCarbohydrates()+"</td>");
-        req.setAttribute("data", statisticDAO.getTableView(singleTone.getLogin()));
-        req.getRequestDispatcher("DiaryWindow.jsp").forward(req, resp);
+        SingleTone singleTone=SingleTone.getInstance("???");
+        if(singleTone.getLogin().equals("???")) req.getRequestDispatcher("AutorizWindow.jsp").forward(req, resp);
+        else {
+            DiaryViewer diaryViewer = new DiaryViewer();
+            diaryViewer.main(req, resp);
+        }
     }
 
     @Override
@@ -61,11 +53,18 @@ public class DiaryServlet extends HttpServlet {
                 if(statistic.getLogin().equals("???")){
                     statistic.setLogin(singleTone.getLogin());
                     statistic.setDate(req.getParameter("date"));
-                    statistic.setCurrCal(food.getCalories());
-                    statistic.setCurrCarbohydrates(food.getCarbohydrates());
-                    statistic.setCurrFats(food.getFats());
-                    statistic.setCurrProteins(food.getProtein());
+                    statistic.setCurrCal(food.getCalories()*diary.getSize()/100);
+                    statistic.setCurrCarbohydrates(food.getCarbohydrates()*diary.getSize()/100);
+                    statistic.setCurrFats(food.getFats()*diary.getSize()/100);
+                    statistic.setCurrProteins(food.getProtein()*diary.getSize()/100);
                     statisticDAO.create(statistic);
+                }
+                else{
+                    statistic.setCurrCal(statistic.getCurrCal()+food.getCalories()*diary.getSize()/100);
+                    statistic.setCurrCarbohydrates(statistic.getCurrCarbohydrates()+food.getCarbohydrates()*diary.getSize()/100);
+                    statistic.setCurrFats(statistic.getCurrFats()+food.getFats()*diary.getSize()/100);
+                    statistic.setCurrProteins(statistic.getCurrProteins()+food.getProtein()*diary.getSize()/100);
+                    statisticDAO.update(statistic);
                 }
             }
         }

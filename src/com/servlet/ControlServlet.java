@@ -18,6 +18,8 @@ import java.io.IOException;
 public class ControlServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        SingleTone singleTone=SingleTone.getInstance("???");
+        if(singleTone.getLogin().equals("???")) req.getRequestDispatcher("AutorizWindow.jsp").forward(req, resp);
         req.getRequestDispatcher("ControlWindow.jsp").forward(req, resp);
     }
 
