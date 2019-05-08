@@ -14,5 +14,8 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping resource="com.model/User.hbm.xml" />
         <mapping resource="com.model/User_data.hbm.xml" />
+        <mapping resource="com.model/Diary.hbm.xml" />
+        <mapping resource="com.model/Food.hbm.xml" />
+        <mapping resource="com.model/Statistic.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

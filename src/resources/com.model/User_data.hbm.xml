@@ -9,7 +9,9 @@
         <property name="mail" column="mail"/>
         <property name="height" column="height"/>
         <property name="weight" column="weight"/>
-        <property name="normKK" column="normKK"/>
-        <property name="normGBU" column="normGBU"/>
+        <property name="normCal" column="normKal"/>
+        <property name="normFats" column="normFats"/>
+        <property name="normProteins" column="normProteins"/>
+        <property name="normCarbohydrates" column="normCarbohydrates"/>
     </class>
 </hibernate-mapping>

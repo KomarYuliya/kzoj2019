@@ -1,5 +1,6 @@
-package com;
+package com.servlet;
 
+import com.SingleTone;
 import com.company.DAO;
 import com.company.UsersDAO;
 import com.company.Users_dataDAO;

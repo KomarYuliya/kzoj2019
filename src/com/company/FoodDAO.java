@@ -1,26 +1,21 @@
 package com.company;
 
+import com.model.Food;
 import com.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 
-public class UsersDAO implements DAO<User, String> {
+public class FoodDAO implements DAO<Food, String> {
     private SessionFactory factory;
-
-    @Override
-    public String getTableView(String data) {
-        return null;
-    }
-
-    public UsersDAO(SessionFactory factory){
+    public FoodDAO(SessionFactory factory){
         this.factory=factory;
     }
-    public boolean create(User user){
+    public boolean create(Food food){
         boolean result=false;
         try(Session session=factory.openSession()){
             session.beginTransaction();
-            session.save(user);
+            session.save(food);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -29,29 +24,29 @@ public class UsersDAO implements DAO<User, String> {
         return result;
     }
 
-    public User read(String login) {
-        User result=new User();
+    public Food read(String foodName) {
+        Food result=new Food();
 
         try(Session session=factory.openSession()){
-            result=session.get(User.class, login);
+            result=session.get(Food.class, foodName);
         }
         catch (Exception e){
             System.out.println("Error "+e.getMessage());
         }
         finally {
             if(result==null){
-                result=new User();
-                result.setLogin("???");
+                result=new Food();
+                result.setFoodName("???");
                 return result;
             }
             return result;
         }
     }
-    public boolean update(User user){
+    public boolean update(Food food){
         boolean result=false;
         try(Session session=factory.openSession()){
             session.beginTransaction();
-            session.update(user);
+            session.update(food);
             session.getTransaction().commit();
             result = true;
         }
@@ -62,11 +57,17 @@ public class UsersDAO implements DAO<User, String> {
             return result;
         }
     }
-    public boolean delete(String user){
+
+    @Override
+    public String getTableView(String data) {
+        return null;
+    }
+
+    public boolean delete(String food){
         boolean result=false;
         try(Session session=factory.openSession()){
             session.beginTransaction();
-            session.delete(user);
+            session.delete(food);
             session.getTransaction().commit();
             result = true;
         }

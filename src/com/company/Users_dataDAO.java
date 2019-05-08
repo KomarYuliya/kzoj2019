@@ -10,6 +10,12 @@ public class Users_dataDAO implements DAO<User_data, String> {
     public Users_dataDAO(SessionFactory factory){
         this.factory=factory;
     }
+
+    @Override
+    public String getTableView(String data) {
+        return null;
+    }
+
     public boolean create(User_data user_data){
         boolean result=false;
         try(Session session=factory.openSession()){
@@ -52,7 +58,7 @@ public class Users_dataDAO implements DAO<User_data, String> {
             return result;
         }
     }
-    public boolean delete(User_data user_data){
+    public boolean delete(String user_data){
         boolean result=false;
         try(Session session=factory.openSession()){
             session.beginTransaction();

@@ -1,4 +1,4 @@
-package com;
+package com.servlet;
 
 import com.company.DAO;
 import com.company.UsersDAO;
@@ -61,8 +61,10 @@ public class RegistrationServlet extends HttpServlet {
                 user_data.setAge(Integer.parseInt(req.getParameter("age")));
                 user_data.setHeight(Integer.parseInt(req.getParameter("height")));
                 user_data.setWeight(Integer.parseInt(req.getParameter("weight")));
-                user_data.setNormKK(12);
-                user_data.setNormGBU(12);
+                user_data.setNormCal(0);
+                user_data.setNormProteins(0);
+                user_data.setNormFats(0);
+                user_data.setNormCarbohydrates(0);
                 user_data.setMail(req.getParameter("email"));
                 user_dataDAO.create(user_data);
             }

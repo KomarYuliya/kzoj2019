@@ -6,8 +6,10 @@ public class User_data {
     private String mail;
     private double height;
     private double weight;
-    private int normKK;
-    private int normGBU;
+    private int normCal;
+    private int normFats;
+    private int normProteins;
+    private int normCarbohydrates;
     public User_data(){};
 
     public String getLogin() {
@@ -50,19 +52,35 @@ public class User_data {
         this.weight = weight;
     }
 
-    public int getNormKK() {
-        return normKK;
+    public int getNormCal() {
+        return normCal;
     }
 
-    public void setNormKK(int normKK) {
-        this.normKK = normKK;
+    public void setNormCal(int normCal) {
+        this.normCal = normCal;
     }
 
-    public int getNormGBU() {
-        return normGBU;
+    public int getNormFats() {
+        return normFats;
     }
 
-    public void setNormGBU(int normGBU) {
-        this.normGBU = normGBU;
+    public void setNormFats(int normFats) {
+        this.normFats = normFats;
+    }
+
+    public int getNormProteins() {
+        return normProteins;
+    }
+
+    public void setNormProteins(int normProteins) {
+        this.normProteins = normProteins;
+    }
+
+    public int getNormCarbohydrates() {
+        return normCarbohydrates;
+    }
+
+    public void setNormCarbohydrates(int normCarbohydrates) {
+        this.normCarbohydrates = normCarbohydrates;
     }
 }

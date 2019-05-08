@@ -27,7 +27,7 @@
             <li><a href="#">Дневник</a></li>
             <li><a href="#">Статистика</a></li>
             <li><a href="/change">Личный кабинет</a></li>
-            <li><a href="#">Фичи разные</a></li>
+            <li><a href="/control">Добавить блюдо</a></li>
             <li><a href="/">Выйти</a></li>
         </ul>
     </nav>
@@ -37,5 +37,6 @@
         <mark style="background-color: azure">Добро пожаловать, ${requestScope.userName}!</mark>
     </strong>
 </h4>
+${requestScope.previousOperation}
 </body>
 </html>
