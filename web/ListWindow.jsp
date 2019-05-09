@@ -115,24 +115,6 @@
                 padding: 10px 20px;
             }
         }
-
-        .btn{
-            float: right;
-            font-size: 14px;
-            color: #fff;
-            background: #00b4ef;
-            border-radius: 30px;
-            padding: 10px 25px;
-            border: none;
-            text-transform: capitalize;
-            transition: all 0.5s ease 0s;
-        }
-        .for{
-            float: top;
-            padding-bottom: 40px;
-            border-radius: 15px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -140,61 +122,32 @@
     <nav class="navbar navbar-default">
         <ul class="nav navbar-nav">
             <li><a href="/diaryf">Главная</a></li>
-            <li class="active"><a href="/diary">Дневник</a></li>
+            <li class="active"><a href="#">Дневник</a></li>
             <li><a href="#">Статистика</a></li>
             <li><a href="/change">Личный кабинет</a></li>
-            <li><a href="/control">Управление</a></li>
+            <li><a href="#">Управление</a></li>
             <li><a href="/">Выйти</a></li>
         </ul>
     </nav>
 </div>
 <div class="container">
-    <form method="post" action="/diary" class="form-horizontal">
-        <div class="row">
-            <div class="col-md-3">
-                <p></p> <label for="date">Дата<input class="form-control" type="date" id="date" name="date"></label>
-            </div>
-            <div class="col-md-3">
-                <p></p> <label for="dish">Блюдо<input class="form-control" type="text" id="dish" name="dish"></label>
-            </div>
-            <div class="col-md-3">
-                <p></p> <label for="size">Размер порции<input class="form-control" type="number" id="size" name="size"></label>
-            </div>
-            <div class="col-md-3">
-                <p class="help-block">${requestScope.errorNoSuchDish}</p>
-                <input type="submit" value="Добавить" class="btn btn-default">
-            </div>
-        </div>
+    <form action="/table" method="post">
+        <input type="text" placeholder="foodname" name="foodName">
+        <input type="submit" value="Поиск">
     </form>
 </div>
-<div class="container">
-    <div  class="form-horizontal">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Дата</th>
-                <th>Блюдо</th>
-                <th>Размер порции</th>
-                <th>Калории</th>
-                <th>Жиры</th>
-                <th>Белки</th>
-                <th>Углеводы</th>
-                <th>Удалить</th>
-            </tr>
-            </thead>
-            <form method="post" action="/diaryf">
-                <p class="help-block">${requestScope.data}</p>
-                <tr>
-
-                    <td colspan="8">
-                        <p class="form-group"> <input class="btn" type="submit" value="Удалить"></p>
-                    </td>
-
-                </tr>
-            </form>
-        </table>
-        <p class="help-block">${requestScope.norms}</p>
-    </div>
+<div class="container-fluid">
+    <table border="4px solid grey">
+        <tr><!-- ЛИМА, ЭТО НАДО ДЕЛАТЬ ТЕГАМИ th, ТАК КАК ЭТО ЗАГОЛОВКИ
+        ТАК ИХ И СТИЛИЗОВАТЬ БУДЕТ ЛЕГЧЕ-->
+            <td>Блюдо</td>
+            <td>Калории</td>
+            <td>Жиры</td>
+            <td>Белки</td>
+            <td>Углеводы</td>
+        </tr>
+        ${requestScope.data}
+    </table>
 </div>
 </body>
 </html>

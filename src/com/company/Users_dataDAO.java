@@ -13,7 +13,9 @@ public class Users_dataDAO implements DAO<User_data, String> {
 
     @Override
     public String getTableView(String data) {
-        return null;
+        User_data user_data=read(data);
+        String result="<td>"+user_data.getMail()+"</td>\n";
+        return result;
     }
 
     public boolean create(User_data user_data){

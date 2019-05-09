@@ -2,7 +2,8 @@ package com;
 
 public class SingleTone {
     private static SingleTone instance;
-    private static String login;
+    private String login;
+    private int accessLevel;
     private SingleTone(String login){
         this.login=login;
     }
@@ -15,6 +16,15 @@ public class SingleTone {
     public String getLogin(){
         return login;
     }
+
+    public int getAccessLevel() {
+        return accessLevel;
+    }
+
+    public void setAccessLevel(int accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
     public void setLogin(String login){
         this.login=login;
     }

@@ -39,5 +39,10 @@ public class User {
     public String getUsername() {
         return username;
     }
+    public String accessLevel(){
+        if(accessLevel==0) return "Пользователь";
+        if(accessLevel==1) return "Модератор";
+        else return "Администратор";
+    }
 }
 

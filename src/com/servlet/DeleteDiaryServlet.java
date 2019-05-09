@@ -41,12 +41,14 @@ public class DeleteDiaryServlet extends HttpServlet {
                 Diary diary = diaryStringDAO.read(checked[i]);
                 Statistic statistic = statisticStringDAO.read(diary.getLogin() + "+" + diary.getDate());
                 Food food = foodStringDAO.read(diary.getFoodName());
-                statistic.setCurrCal(statistic.getCurrCal() - diary.getSize() / 100 * food.getCalories());
-                statistic.setCurrFats(statistic.getCurrFats() - diary.getSize() / 100 * food.getFats());
-                statistic.setCurrProteins(statistic.getCurrProteins() - diary.getSize() / 100 * food.getProtein());
-                statistic.setCurrCarbohydrates(statistic.getCurrCarbohydrates() - diary.getSize() / 100 * food.getCarbohydrates());
-                statisticStringDAO.update(statistic);
-                diaryStringDAO.delete(diary);
+                if(!food.getFoodName().equals("???")) {
+                    statistic.setCurrCal(statistic.getCurrCal() - diary.getSize() / 100 * food.getCalories());
+                    statistic.setCurrFats(statistic.getCurrFats() - diary.getSize() / 100 * food.getFats());
+                    statistic.setCurrProteins(statistic.getCurrProteins() - diary.getSize() / 100 * food.getProtein());
+                    statistic.setCurrCarbohydrates(statistic.getCurrCarbohydrates() - diary.getSize() / 100 * food.getCarbohydrates());
+                    statisticStringDAO.update(statistic);
+                    diaryStringDAO.delete(diary);
+                }
             }
         }
         DiaryViewer diaryViewer=new DiaryViewer();
