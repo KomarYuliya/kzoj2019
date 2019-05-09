@@ -133,7 +133,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2><strong><mark style="background-color: azure">Информация о Вас</mark></strong></h2>
-            ${requestScope.userData}
+            <div class="form-horizontal">${requestScope.userData}</div>
         </div>
         <div class="col-md-6">
             <h2><strong><mark style="background-color: azure">Изменение данных</mark></strong></h2>
