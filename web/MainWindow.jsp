@@ -37,6 +37,6 @@
         <mark style="background-color: azure">Добро пожаловать, ${requestScope.userName}!</mark>
     </strong>
 </h4>
-${requestScope.previousOperation}
+<p class="help-block">${requestScope.previousOperation}</p>
 </body>
 </html>
